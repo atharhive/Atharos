@@ -50,7 +50,7 @@ const OSHeroSection = () => {
       {
         id: 3,
         name: "Contact",
-        icon: "fluent-color:mail-48",
+        image: "/images/contact-computer.svg",
         x: 190,
         y: 60,
         defaultWidth: 700,
@@ -68,7 +68,7 @@ const OSHeroSection = () => {
       {
         id: 5,
         name: "Gallery",
-        icon: "fluent-color:image-48",
+        image: "/images/gallery-mountain.svg",
         x: 20,
         y: 160,
         defaultWidth: 1000,
