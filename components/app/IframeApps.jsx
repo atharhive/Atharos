@@ -52,7 +52,7 @@ export const Paint = () => {
 };
 
 export const VSCode = () => {
-  const files = {
+  const initialFiles = {
     "pages/index.js": `import Head from "next/head";
 import HeroSection from "../components/HeroSection";
 
@@ -102,10 +102,54 @@ export default Projects;`,
   }
 }`,
   };
-  const [selectedFile, setSelectedFile] = useState(Object.keys(files)[0]);
+  const [files, setFiles] = useState(initialFiles);
+  const [selectedFile, setSelectedFile] = useState(
+    Object.keys(initialFiles)[0],
+  );
   const [terminalOpen, setTerminalOpen] = useState(true);
+  const [terminalInput, setTerminalInput] = useState("");
+  const [terminalLines, setTerminalLines] = useState([
+    { type: "path", text: "~/Projects/desktop-portfolio" },
+    { type: "output", text: "Type help to see available commands." },
+  ]);
   const fileName = selectedFile.split("/").pop();
   const lines = files[selectedFile].split("\n");
+
+  const runCommand = (event) => {
+    event.preventDefault();
+    const command = terminalInput.trim();
+    if (!command) return;
+
+    const output = (() => {
+      if (command === "help") {
+        return "Available: help, ls, pwd, clear, echo <text>, bun run dev, bun run build";
+      }
+      if (command === "pwd") return "/home/atharos/Projects/desktop-portfolio";
+      if (command === "ls")
+        return "components  pages  public  styles  package.json";
+      if (command === "bun run dev")
+        return "ready - started server on http://localhost:3000";
+      if (command === "bun run build")
+        return "Compiled successfully - static pages generated";
+      if (command === "clear") return "__CLEAR__";
+      if (command.startsWith("echo ")) return command.slice(5);
+      return `command not found: ${command}`;
+    })();
+
+    if (output === "__CLEAR__") {
+      setTerminalLines([]);
+    } else {
+      setTerminalLines((current) => [
+        ...current,
+        { type: "command", text: command },
+        {
+          type: output.includes("not found") ? "error" : "output",
+          text: output,
+        },
+      ]);
+    }
+    setTerminalInput("");
+  };
 
   const fileIcon = (file) => {
     if (file.endsWith(".jsx") || file.endsWith(".js"))
@@ -171,27 +215,64 @@ export default Projects;`,
                   <div key={index}>{index + 1}</div>
                 ))}
               </div>
-              <pre className="pr-8 text-[#d4d4d4]">
-                <code>{files[selectedFile]}</code>
-              </pre>
+              <textarea
+                value={files[selectedFile]}
+                onChange={(event) =>
+                  setFiles((current) => ({
+                    ...current,
+                    [selectedFile]: event.target.value,
+                  }))
+                }
+                spellCheck={false}
+                aria-label={`Editing ${fileName}`}
+                className="min-h-full min-w-[620px] resize-none bg-transparent pr-8 text-[#d4d4d4] outline-none"
+              />
             </div>
           </div>
           {terminalOpen && (
-            <div className="h-28 shrink-0 border-t border-[#333333] bg-[#181818] p-3 text-xs">
+            <div className="flex h-36 shrink-0 flex-col border-t border-[#333333] bg-[#181818] p-3 text-xs">
               <div className="mb-2 flex items-center gap-5 uppercase text-[#bbbbbb]">
-                <span className="border-b border-[#007acc] pb-1 text-white">
+                <button className="border-b border-[#007acc] pb-1 text-white">
                   Terminal
-                </span>
-                <span>Problems</span>
-                <span>Output</span>
+                </button>
+                <button>Problems</button>
+                <button>Output</button>
               </div>
-              <div className="text-[#8fbc8f]">~/Projects/desktop-portfolio</div>
-              <div>
-                <span className="text-[#569cd6]">$</span> bun run dev
+              <div className="min-h-0 flex-1 overflow-y-auto">
+                {terminalLines.map((line, index) => (
+                  <div
+                    key={`${line.text}-${index}`}
+                    className={
+                      line.type === "path"
+                        ? "text-[#8fbc8f]"
+                        : line.type === "command"
+                          ? "text-[#d4d4d4]"
+                          : line.type === "error"
+                            ? "text-[#f48771]"
+                            : "text-[#6a9955]"
+                    }
+                  >
+                    {line.type === "command" && (
+                      <span className="text-[#569cd6]">$ </span>
+                    )}
+                    {line.text}
+                  </div>
+                ))}
               </div>
-              <div className="text-[#6a9955]">
-                ready - started server on http://localhost:3000
-              </div>
+              <form
+                onSubmit={runCommand}
+                className="mt-2 flex items-center gap-2 border-t border-[#333333] pt-2"
+              >
+                <span className="text-[#569cd6]">$</span>
+                <input
+                  value={terminalInput}
+                  onChange={(event) => setTerminalInput(event.target.value)}
+                  className="min-w-0 flex-1 bg-transparent text-[#d4d4d4] outline-none"
+                  placeholder="type a command..."
+                  aria-label="Terminal command"
+                  autoComplete="off"
+                />
+              </form>
             </div>
           )}
         </main>
