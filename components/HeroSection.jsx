@@ -579,7 +579,7 @@ const OSHeroSection = () => {
     const maxZ = Math.max(...activeWindows.map((w) => w.zIndex));
     setActiveWindows(
       activeWindows.map((w) =>
-        w.id === windowId ? { ...w, zIndex: maxZ + 1 } : w,
+        w.id === windowId ? { ...w, zIndex: maxZ + 1, isMinimized: false } : w,
       ),
     );
   };
@@ -751,6 +751,7 @@ const OSHeroSection = () => {
         setStartMenuOpen={setStartMenuOpen}
         activeWindows={activeWindows}
         onBringToFront={bringToFront}
+        onClose={closeWindow}
       />
 
       {startMenuOpen && (

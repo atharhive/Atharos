@@ -76,7 +76,7 @@ const TopMenuBar = ({
         </motion.div>
 
         <motion.div
-          className="flex items-center gap-2 text-white text-sm"
+          className="flex items-center gap-2 text-white text-sm font-mono tracking-wide"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -86,13 +86,13 @@ const TopMenuBar = ({
             damping: 25,
           }}
         >
-          {!isMobile && (
+          {(!isMobile || isClient) && (
             <div className="flex items-center gap-2 px-3 py-1 bg-white/5 backdrop-blur-sm rounded-full">
               <Icon
                 icon="mdi:calendar-today"
                 className="w-3.5 h-3.5 text-blue-400"
               />
-              <span className="font-medium">
+              <span className="font-medium uppercase">
                 {isClient ? formatDate(displayTime) : "---"}
               </span>
             </div>

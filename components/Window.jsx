@@ -110,10 +110,14 @@ const Window = ({
       className={`${isMobile ? "fixed" : "absolute"} window-container`}
       style={{
         left: isMobile || window.isFullscreen ? 0 : `${window.x}px`,
-        top: isMobile || window.isFullscreen ? 0 : `${window.y}px`,
+        top: isMobile ? "3rem" : window.isFullscreen ? 0 : `${window.y}px`,
         width: isMobile || window.isFullscreen ? "100%" : `${window.width}px`,
-        height: isMobile || window.isFullscreen ? "100%" : `${window.height}px`,
-        zIndex: window.zIndex,
+        height: isMobile
+          ? "calc(100% - 7rem)"
+          : window.isFullscreen
+            ? "100%"
+            : `${window.height}px`,
+        zIndex: isMobile ? 30 : window.zIndex,
         display: window.isMinimized ? "none" : undefined,
       }}
       initial={{ opacity: 0, scale: 0.8 }}
@@ -173,7 +177,7 @@ const Window = ({
         )}
 
         <div
-          className={`bg-gray-800/90 ${isMobile ? "mt-10" : "rounded-t-xl cursor-move"} px-4 py-3 flex items-center justify-between border-b border-gray-700/50`}
+          className={`bg-gray-800/90 ${isMobile ? "" : "rounded-t-xl cursor-move"} px-4 py-3 flex items-center justify-between border-b border-gray-700/50`}
           onMouseDown={isMobile ? undefined : (e) => onMouseDown(e, window.id)}
         >
           <div className="flex items-center space-x-3">
@@ -192,13 +196,22 @@ const Window = ({
           </div>
           <div className="flex items-center gap-2">
             {isMobile ? (
-              <button
-                onClick={() => onClose(window.id)}
-                className="pixel-control pixel-close"
-                aria-label="Close window"
-              >
-                <Icon icon="pixelarticons:close" className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => onMinimize(window.id)}
+                  className="pixel-control pixel-minimize"
+                  aria-label="Minimize window"
+                >
+                  <Icon icon="pixelarticons:minus" className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => onClose(window.id)}
+                  className="pixel-control pixel-close"
+                  aria-label="Close window"
+                >
+                  <Icon icon="pixelarticons:close" className="w-5 h-5" />
+                </button>
+              </div>
             ) : (
               <>
                 <button

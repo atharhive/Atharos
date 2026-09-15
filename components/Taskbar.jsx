@@ -7,6 +7,7 @@ const Taskbar = ({
   setStartMenuOpen,
   activeWindows,
   onBringToFront,
+  onClose,
 }) => {
   const [taskbarSize, setTaskbarSize] = useState("normal");
 
@@ -95,6 +96,17 @@ const Taskbar = ({
                   {window.name}
                 </span>
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transform scale-x-100 group-hover:scale-x-100 transition-transform duration-300"></div>
+              </button>
+              <button
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onClose(window.id);
+                }}
+                className="absolute right-1 top-1 z-10 rounded bg-black/50 p-0.5 text-white/70 hover:text-white sm:hidden sm:group-hover:block"
+                aria-label={`Close ${window.name}`}
+                title="Close window"
+              >
+                <Icon icon="pixelarticons:close" className="h-3 w-3" />
               </button>
 
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 bg-black/90 backdrop-blur-xl rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200 pointer-events-none whitespace-nowrap">
