@@ -1,0 +1,19 @@
+# Node modules
+node_modules/
+
+# Next.js build directory
+.next/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: local env files
+.env
+.env.local
+
+# Optional: OS & editor-specific
+.DS_Store
+*.swp
+.vercel
