@@ -41,7 +41,7 @@ const OSHeroSection = () => {
       {
         id: 2,
         name: "Projects",
-        icon: "material-icon-theme:folder-project-open",
+        image: "/images/project-penguin.svg",
         x: 105,
         y: 60,
         defaultWidth: 700,

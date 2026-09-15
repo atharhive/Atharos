@@ -143,10 +143,12 @@ const Projects = () => {
       <div className="max-w-3xl mx-auto pb-8">
         <div className="flex items-center gap-6 mb-6">
           <div className="relative">
-            <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-blue-600 rounded-full p-1">
-              <div className="w-full h-full bg-gray-900 rounded-full flex items-center justify-center">
-                <Icon icon="mdi:folder-star" className="w-10 h-10 text-white" />
-              </div>
+            <div className="w-20 h-20 overflow-hidden">
+              <img
+                src="/images/project-penguin.svg"
+                alt="Pixel penguin Projects logo"
+                className="h-full w-full object-contain"
+              />
             </div>
           </div>
           <div>
