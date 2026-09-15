@@ -31,7 +31,7 @@ const OSHeroSection = () => {
       {
         id: 1,
         name: "About Me",
-        image: "/images/athar-avatar.svg",
+        image: "/images/aboutme-cat.svg",
         color: "text-blue-400",
         x: 20,
         y: 60,
