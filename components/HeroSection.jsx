@@ -230,6 +230,16 @@ const OSHeroSection = () => {
         defaultWidth: 900,
         defaultHeight: 650,
       },
+      {
+        id: 27,
+        name: "Discord",
+        image: "/images/discord-pixel.svg",
+        externalUrl: "https://discord.gg/NzzFKfXrt5",
+        x: 275,
+        y: 760,
+        defaultWidth: 900,
+        defaultHeight: 650,
+      },
     ].map((icon, index) => ({
       ...icon,
       x: 20 + (index % 4) * 85,
