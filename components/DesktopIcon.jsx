@@ -46,7 +46,7 @@ const DesktopIcon = ({
         >
           {icon.image ? (
             <div
-              className={`${isMobile ? "w-8 h-8" : "w-12 h-12"} border-2 border-black bg-white overflow-hidden shadow-[3px_3px_0_rgba(0,0,0,0.8)] transform hover:scale-110 transition-all duration-200 pointer-events-none`}
+              className={`${isMobile ? "w-8 h-8" : "w-12 h-12"} overflow-hidden transform hover:scale-110 transition-all duration-200 pointer-events-none`}
             >
               <img
                 src={icon.image}

@@ -31,7 +31,7 @@ const OSHeroSection = () => {
       {
         id: 1,
         name: "About Me",
-        icon: "hugeicons:user-sharing",
+        image: "/images/athar-avatar.svg",
         color: "text-blue-400",
         x: 20,
         y: 60,
