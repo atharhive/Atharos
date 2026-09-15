@@ -59,7 +59,7 @@ const OSHeroSection = () => {
       {
         id: 4,
         name: "Hobbies",
-        icon: "fluent-emoji-flat:camping",
+        image: "/images/hobbies-ghost.svg",
         x: 275,
         y: 60,
         defaultWidth: 700,
