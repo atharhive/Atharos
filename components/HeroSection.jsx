@@ -77,7 +77,7 @@ const OSHeroSection = () => {
       {
         id: 6,
         name: "Calculator",
-        icon: "flat-color-icons:calculator",
+        image: "/images/icon-calculator.svg",
         x: 105,
         y: 160,
         defaultWidth: 400,
@@ -104,7 +104,7 @@ const OSHeroSection = () => {
       {
         id: 9,
         name: "Spin Wheel",
-        icon: "noto:wheel",
+        image: "/images/icon-spinwheel.svg",
         x: 20,
         y: 260,
         defaultWidth: 800,
@@ -113,7 +113,7 @@ const OSHeroSection = () => {
       {
         id: 10,
         name: "Paint",
-        icon: "noto-v1:artist-palette",
+        image: "/images/icon-paint.svg",
         x: 105,
         y: 260,
         defaultWidth: 700,
@@ -122,7 +122,7 @@ const OSHeroSection = () => {
       {
         id: 12,
         name: "Notepad",
-        icon: "fxemoji:note",
+        image: "/images/icon-notepad.svg",
         x: 275,
         y: 260,
         defaultWidth: 600,
@@ -131,8 +131,7 @@ const OSHeroSection = () => {
       {
         id: 13,
         name: "Music Player",
-        icon: "mdi:music",
-        color: "text-blue-500",
+        image: "/images/icon-music-player.svg",
         x: 105,
         y: 360,
         defaultWidth: 700,
@@ -141,7 +140,7 @@ const OSHeroSection = () => {
       {
         id: 14,
         name: "Trash",
-        icon: "flat-color-icons:full-trash",
+        image: "/images/icon-trash.svg",
         x: 20,
         y: 360,
         defaultWidth: 600,
@@ -150,7 +149,7 @@ const OSHeroSection = () => {
       {
         id: 15,
         name: "HTML E/D",
-        image: "https://jworse.com/img/tools/html-encoder-decoder.png",
+        image: "/images/icon-html-ed.svg",
         x: 190,
         y: 560,
         defaultWidth: 800,
@@ -159,7 +158,7 @@ const OSHeroSection = () => {
       {
         id: 16,
         name: "Tier List",
-        image: "https://jworse.com/img/tools/tier-list.png",
+        image: "/images/icon-tier-list.svg",
         x: 275,
         y: 560,
         defaultWidth: 900,
@@ -168,7 +167,7 @@ const OSHeroSection = () => {
       {
         id: 17,
         name: "Speed Typing",
-        image: "https://jworse.com/img/tools/speed-typing.png",
+        image: "/images/icon-speed-typing.svg",
         x: 20,
         y: 560,
         defaultWidth: 800,
@@ -177,7 +176,7 @@ const OSHeroSection = () => {
       {
         id: 18,
         name: "Color Picker",
-        image: "https://jworse.com/img/tools/color-picker.png",
+        image: "/images/icon-color-picker.svg",
         x: 105,
         y: 560,
         defaultWidth: 700,
@@ -186,7 +185,7 @@ const OSHeroSection = () => {
       {
         id: 19,
         name: "Snake",
-        image: "https://jworse.com/img/games/snake.png",
+        image: "/images/icon-snake.svg",
         x: 190,
         y: 660,
         defaultWidth: 800,
@@ -195,7 +194,7 @@ const OSHeroSection = () => {
       {
         id: 22,
         name: "Dino Runner",
-        image: "https://jworse.com/img/games/dino-runner.png",
+        image: "/images/icon-dino-runner.svg",
         x: 105,
         y: 660,
         defaultWidth: 1200,
@@ -204,7 +203,7 @@ const OSHeroSection = () => {
       {
         id: 23,
         name: "Neon Wings",
-        icon: "noto:rocket",
+        image: "/images/icon-neon-wings.svg",
         x: 20,
         y: 760,
         defaultWidth: 1200,
@@ -213,7 +212,7 @@ const OSHeroSection = () => {
       {
         id: 25,
         name: "Videos",
-        icon: "fluent-color:video-20",
+        image: "/images/icon-videos.svg",
         x: 275,
         y: 760,
         defaultWidth: 800,
