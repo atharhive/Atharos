@@ -124,23 +124,39 @@
 
       @media (max-width: 640px) {
         #overlay {
-          padding: 20px;
+          padding: 12px;
+        }
+
+        .header {
+          margin-top: 0;
         }
 
         .title {
           font-size: 0.8rem;
           letter-spacing: 0.45em;
+          transform: translateY(0);
         }
 
         .status-pill {
           font-size: 0.55rem;
           letter-spacing: 0.15em;
+          transform: translateY(0);
         }
 
         .hud-bottom {
+          width: 100%;
           font-size: 0.58rem;
           letter-spacing: 0.7px;
           gap: 16px;
+          transform: translateY(-34px);
+        }
+
+        .hud-bottom > div:first-child {
+          margin-left: 0 !important;
+        }
+
+        .hud-bottom > div:last-child {
+          margin-right: 0 !important;
         }
       }
     </style>
