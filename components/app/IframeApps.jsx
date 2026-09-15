@@ -67,28 +67,26 @@ export default function Home() {
     "components/HeroSection.jsx": `const OSHeroSection = () => {
   const [activeWindows, setActiveWindows] = useState([]);
   const [wallpaper, setWallpaper] = useState(
-    "/images/wallpaper/wallpaper1.png",
+    "/images/wallpaper/stable-singularity.html",
   );
 
   return <Desktop activeWindows={activeWindows} />;
 };
 
 export default OSHeroSection;`,
+    "components/app/Projects.jsx": `const projects = [
+  { title: "Ink", stack: "Rust, MCP, TypeScript" },
+  { title: "Meyme", stack: "FastAPI, Gemini, WebSockets" },
+  { title: "Stun", stack: "Next.js, Gemini, Firebase" },
+];
+
+export default Projects;`,
     "components/Window.jsx": `const Window = ({ window, onClose }) => (
   <motion.div className="window-container">
     <WindowControls onClose={onClose} />
     <WindowContent window={window} />
   </motion.div>
 );`,
-    "components/WindowContent.jsx": `if (window.name === "Projects") {
-  return <Projects />;
-}
-
-if (window.name === "Snake") {
-  return <Snake />;
-}
-
-return <FallbackApp name={window.name} />;`,
     "styles/globals.css": `.pixel-screen { isolation: isolate; }
 
 .pixel-grid {
@@ -105,33 +103,117 @@ return <FallbackApp name={window.name} />;`,
 }`,
   };
   const [selectedFile, setSelectedFile] = useState(Object.keys(files)[0]);
+  const [terminalOpen, setTerminalOpen] = useState(true);
+  const fileName = selectedFile.split("/").pop();
+  const lines = files[selectedFile].split("\n");
+
+  const fileIcon = (file) => {
+    if (file.endsWith(".jsx") || file.endsWith(".js"))
+      return "vscode-icons:file-type-js-official";
+    if (file.endsWith(".css")) return "vscode-icons:file-type-css";
+    return "vscode-icons:default-file";
+  };
 
   return (
-    <div className="flex h-full min-h-0 bg-[#111827] text-gray-200 font-mono text-xs sm:text-sm">
-      <aside className="w-44 sm:w-60 shrink-0 overflow-y-auto border-r border-gray-700 bg-[#0b1220] p-3">
-        <div className="mb-3 text-[10px] uppercase tracking-[0.2em] text-cyan-300">
-          Athar OS
-        </div>
-        <div className="mb-2 text-gray-500">EXPLORER</div>
-        <div className="mb-2 text-cyan-200">▾ desktop-portfolio</div>
-        {Object.keys(files).map((file) => (
-          <button
-            key={file}
-            onClick={() => setSelectedFile(file)}
-            className={`block w-full truncate border-l-2 py-1 pl-3 text-left transition-colors ${selectedFile === file ? "border-cyan-400 bg-cyan-400/10 text-white" : "border-transparent text-gray-400 hover:text-white"}`}
-          >
-            {file}
+    <div className="flex h-full min-h-0 flex-col bg-[#1e1e1e] font-mono text-xs text-[#cccccc] sm:text-sm">
+      <div className="flex min-h-0 flex-1">
+        <nav className="flex w-11 shrink-0 flex-col items-center gap-4 border-r border-[#333333] bg-[#181818] py-3 text-[#858585]">
+          <button className="text-white" title="Explorer">
+            <Icon icon="codicon:files" className="h-5 w-5" />
           </button>
-        ))}
-      </aside>
-      <section className="min-w-0 flex-1 overflow-auto bg-[#101827]">
-        <div className="sticky top-0 border-b border-gray-700 bg-[#172033] px-4 py-2 text-cyan-200">
-          {selectedFile}
+          <button title="Search">
+            <Icon icon="codicon:search" className="h-5 w-5" />
+          </button>
+          <button title="Source Control">
+            <Icon icon="codicon:source-control" className="h-5 w-5" />
+          </button>
+          <button title="Extensions">
+            <Icon icon="codicon:extensions" className="h-5 w-5" />
+          </button>
+          <div className="mt-auto">
+            <Icon icon="codicon:settings-gear" className="h-5 w-5" />
+          </div>
+        </nav>
+
+        <aside className="hidden w-52 shrink-0 overflow-y-auto border-r border-[#333333] bg-[#181818] sm:block">
+          <div className="flex items-center justify-between px-4 py-3 text-[11px] uppercase tracking-wide text-[#bbbbbb]">
+            <span>Explorer</span>
+            <Icon icon="codicon:ellipsis" className="h-4 w-4" />
+          </div>
+          <div className="flex items-center gap-1 px-3 pb-2 text-[#cccccc]">
+            <Icon icon="codicon:chevron-down" className="h-4 w-4" />
+            <span>DESKTOP-PORTFOLIO</span>
+          </div>
+          {Object.keys(files).map((file) => (
+            <button
+              key={file}
+              onClick={() => setSelectedFile(file)}
+              className={`flex w-full items-center gap-2 truncate border-l-2 px-4 py-1 text-left ${selectedFile === file ? "border-[#007acc] bg-[#37373d] text-white" : "border-transparent text-[#bbbbbb] hover:bg-[#2a2d2e]"}`}
+            >
+              <Icon icon={fileIcon(file)} className="h-4 w-4 shrink-0" />
+              <span className="truncate">{file.split("/").pop()}</span>
+            </button>
+          ))}
+        </aside>
+
+        <main className="flex min-w-0 flex-1 flex-col bg-[#1e1e1e]">
+          <div className="flex shrink-0 overflow-x-auto border-b border-[#333333] bg-[#181818]">
+            <div className="flex items-center gap-2 border-t-2 border-[#007acc] bg-[#1e1e1e] px-4 py-2 text-[#ffffff]">
+              <Icon icon={fileIcon(fileName)} className="h-4 w-4" />
+              <span className="whitespace-nowrap">{fileName}</span>
+              <span className="text-[#858585]">×</span>
+            </div>
+          </div>
+          <div className="min-h-0 flex-1 overflow-auto">
+            <div className="flex min-w-max py-3 leading-6">
+              <div className="select-none px-4 text-right text-[#5a5a5a]">
+                {lines.map((_, index) => (
+                  <div key={index}>{index + 1}</div>
+                ))}
+              </div>
+              <pre className="pr-8 text-[#d4d4d4]">
+                <code>{files[selectedFile]}</code>
+              </pre>
+            </div>
+          </div>
+          {terminalOpen && (
+            <div className="h-28 shrink-0 border-t border-[#333333] bg-[#181818] p-3 text-xs">
+              <div className="mb-2 flex items-center gap-5 uppercase text-[#bbbbbb]">
+                <span className="border-b border-[#007acc] pb-1 text-white">
+                  Terminal
+                </span>
+                <span>Problems</span>
+                <span>Output</span>
+              </div>
+              <div className="text-[#8fbc8f]">~/Projects/desktop-portfolio</div>
+              <div>
+                <span className="text-[#569cd6]">$</span> bun run dev
+              </div>
+              <div className="text-[#6a9955]">
+                ready - started server on http://localhost:3000
+              </div>
+            </div>
+          )}
+        </main>
+      </div>
+      <div className="flex h-6 shrink-0 items-center justify-between bg-[#007acc] px-3 text-[11px] text-white">
+        <div className="flex items-center gap-3">
+          <Icon icon="codicon:remote" className="h-4 w-4" />
+          <span>main*</span>
+          <span>0 errors</span>
         </div>
-        <pre className="min-w-max p-4 leading-6 text-gray-300">
-          <code>{files[selectedFile]}</code>
-        </pre>
-      </section>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => setTerminalOpen(!terminalOpen)}
+            className="hover:text-[#d7efff]"
+          >
+            Terminal
+          </button>
+          <span>UTF-8</span>
+          <span>JavaScript React</span>
+          <span>Prettier</span>
+        </div>
+      </div>
     </div>
   );
 };

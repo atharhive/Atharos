@@ -1,73 +1,92 @@
 import { Icon } from "@iconify/react";
 
 const Hobbies = () => {
+  const interests = [
+    {
+      title: "Ideas & Inquiry",
+      subtitle: "Stay curious",
+      description:
+        "Random experiments, writing, philosophy, psychology, neuroscience, theology, history, and literature. Proudly nerdy.",
+      icon: "mdi:head-lightbulb-outline",
+      color: "green",
+    },
+    {
+      title: "Code & Craft",
+      subtitle: "Make useful things",
+      description:
+        "Coding, building, and engineering projects that turn questions into practical tools and experiences.",
+      icon: "mdi:tools",
+      color: "blue",
+    },
+    {
+      title: "Movement",
+      subtitle: "Train with intent",
+      description:
+        "Running, strength training, football, Sambo, and mixed martial arts.",
+      icon: "mdi:run-fast",
+      color: "amber",
+    },
+  ];
+
+  const colorClasses = {
+    green: {
+      border: "hover:border-green-500/50",
+      background: "bg-green-500/20",
+      text: "text-green-400",
+    },
+    blue: {
+      border: "hover:border-blue-500/50",
+      background: "bg-blue-500/20",
+      text: "text-blue-400",
+    },
+    amber: {
+      border: "hover:border-amber-500/50",
+      background: "bg-amber-500/20",
+      text: "text-amber-400",
+    },
+  };
+
   return (
-    <div className="p-8 text-white h-full">
-      <div className="max-w-2xl mx-auto">
+    <div className="h-full min-h-0 overflow-y-auto overscroll-contain p-6 text-white sm:p-8">
+      <div className="max-w-2xl mx-auto pb-8">
         <div className="mb-6">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent mb-2">
-            Hobbies
+            What I&apos;m Into
           </h2>
           <p className="text-gray-400">
-            Explore the activities available in this desktop.
+            Curiosity, craft, and a body that can keep up.
           </p>
         </div>
 
-        <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-gray-900">
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50 hover:border-green-500/50 transition-all group">
-            <div className="flex items-center gap-4 mb-3">
-              <div className="p-3 bg-green-500/20 rounded-lg group-hover:bg-green-500/30 transition-colors">
-                <Icon icon="mdi:tent" className="w-6 h-6 text-green-400" />
+        <div className="space-y-4">
+          {interests.map((interest) => (
+            <div
+              key={interest.title}
+              className={`group rounded-xl border border-gray-700/50 bg-gray-800/50 p-5 backdrop-blur-sm transition-all ${colorClasses[interest.color].border}`}
+            >
+              <div className="mb-3 flex items-center gap-4">
+                <div
+                  className={`rounded-lg p-3 ${colorClasses[interest.color].background}`}
+                >
+                  <Icon
+                    icon={interest.icon}
+                    className={`h-6 w-6 ${colorClasses[interest.color].text}`}
+                  />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">
+                    {interest.title}
+                  </h3>
+                  <p className={`${colorClasses[interest.color].text} text-sm`}>
+                    {interest.subtitle}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-white font-semibold text-lg">Games</h3>
-                <p className="text-green-400 text-sm">Interactive Play</p>
-              </div>
+              <p className="text-sm leading-relaxed text-gray-300">
+                {interest.description}
+              </p>
             </div>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Browse the built-in games and interactive tools for a quick break.
-            </p>
-          </div>
-
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50 hover:border-amber-500/50 transition-all group">
-            <div className="flex items-center gap-4 mb-3">
-              <div className="p-3 bg-amber-500/20 rounded-lg group-hover:bg-amber-500/30 transition-colors">
-                <Icon
-                  icon="mdi:chess-king"
-                  className="w-6 h-6 text-amber-400"
-                />
-              </div>
-              <div>
-                <h3 className="text-white font-semibold text-lg">Media</h3>
-                <p className="text-amber-400 text-sm">Watch and Listen</p>
-              </div>
-            </div>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Open the media applications to explore audio, video, and visual
-              content.
-            </p>
-          </div>
-
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50 hover:border-cyan-500/50 transition-all group">
-            <div className="flex items-center gap-4 mb-3">
-              <div className="p-3 bg-cyan-500/20 rounded-lg group-hover:bg-cyan-500/30 transition-colors">
-                <Icon
-                  icon="mdi:desktop-tower"
-                  className="w-6 h-6 text-cyan-400"
-                />
-              </div>
-              <div>
-                <h3 className="text-white font-semibold text-lg">
-                  Customization
-                </h3>
-                <p className="text-cyan-400 text-sm">Make It Yours</p>
-              </div>
-            </div>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Change wallpapers, resize the taskbar, and arrange the desktop to
-              suit your workflow.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </div>
