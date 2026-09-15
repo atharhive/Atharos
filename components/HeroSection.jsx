@@ -22,7 +22,7 @@ const OSHeroSection = () => {
   const [windowDragOffset, setWindowDragOffset] = useState({ x: 0, y: 0 });
   const [wallpaperSelectorOpen, setWallpaperSelectorOpen] = useState(false);
   const [wallpaper, setWallpaper] = useState(
-    "/images/wallpaper/wallpaper1.png",
+    "/images/wallpaper/stable-singularity.html",
   );
   const [isMobile, setIsMobile] = useState(false);
   const [refreshKey, setRefreshKey] = useState(0);
@@ -567,6 +567,8 @@ const OSHeroSection = () => {
     setContextMenu(null);
   };
 
+  const isHtmlWallpaper = wallpaper.toLowerCase().endsWith(".html");
+
   return (
     <div
       className="h-screen relative overflow-hidden bg-black"
@@ -575,23 +577,42 @@ const OSHeroSection = () => {
       onMouseUp={handleMouseUp}
     >
       <AnimatePresence mode="wait">
-        <motion.div
-          key={wallpaper}
-          className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{
-            duration: 0.6,
-            ease: [0.43, 0.13, 0.23, 0.96],
-          }}
-          style={{
-            backgroundImage: `url(${wallpaper})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
+        {isHtmlWallpaper ? (
+          <motion.iframe
+            key={wallpaper}
+            title="Live singularity wallpaper"
+            src={wallpaper}
+            className="absolute inset-0 w-full h-full border-0 overflow-hidden"
+            style={{
+              background: "#010103",
+              pointerEvents: "auto",
+              transform: "none",
+              scale: "none",
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.43, 0.13, 0.23, 0.96] }}
+          />
+        ) : (
+          <motion.div
+            key={wallpaper}
+            className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900"
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{
+              duration: 0.6,
+              ease: [0.43, 0.13, 0.23, 0.96],
+            }}
+            style={{
+              backgroundImage: `url(${wallpaper})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+            }}
+          />
+        )}
       </AnimatePresence>
 
       <TopMenuBar

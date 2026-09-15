@@ -15,6 +15,12 @@ const WallpaperSelector = ({
     { id: 4, url: "/images/wallpaper/wallpaper4.jpg", name: "Wallpaper 4" },
     { id: 5, url: "/images/wallpaper/wallpaper5.jpg", name: "Wallpaper 5" },
     { id: 6, url: "/images/wallpaper/wallpaper6.jpg", name: "Wallpaper 6" },
+    {
+      id: 7,
+      url: "/images/wallpaper/stable-singularity.html",
+      preview: "/images/wallpaper/stable-singularity-preview.svg",
+      name: "Stable Singularity",
+    },
   ];
 
   const handleFileUpload = (e) => {
@@ -94,7 +100,7 @@ const WallpaperSelector = ({
                 }`}
               >
                 <img
-                  src={wallpaper.url}
+                  src={wallpaper.preview ?? wallpaper.url}
                   alt={wallpaper.name}
                   className="w-full aspect-video object-cover transition-transform duration-500 group-hover:scale-105"
                 />
