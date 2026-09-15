@@ -1,27 +1,29 @@
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 
 const Videos = ({ onOpenWindow }) => {
   const videos = [
-    {
-      id: 1,
-      title: "Saldır Jworse (Music)",
-      videoId: "rydsvoZYRhQ"
-    },
-
-  ].map(video => ({
+    { id: 1, title: "YouTube Video 1", videoId: "jNQXAC9IVRw" },
+    { id: 2, title: "YouTube Video 2", videoId: "cYc628GzqCM" },
+    { id: 3, title: "YouTube Video 3", videoId: "XnSYbWg6mdY" },
+    { id: 4, title: "YouTube Video 4", videoId: "aPkQ57cXrPA" },
+    { id: 5, title: "YouTube Video 5", videoId: "sZ60bY2pJfo" },
+    { id: 6, title: "YouTube Video 6", videoId: "FDjeRloNgx0" },
+    { id: 7, title: "YouTube Video 7", videoId: "8HzIlKe--NU" },
+    { id: 8, title: "YouTube Video 8", videoId: "CR5Jp_ag2M8" },
+  ].map((video) => ({
     ...video,
-    thumbnail: `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`
+    thumbnail: `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`,
   }));
 
   const handleVideoClick = (video) => {
     const videoWindow = {
       name: video.title,
-      icon: 'mdi:play-circle',
-      color: 'from-blue-500 to-gray-600',
+      icon: "mdi:play-circle",
+      color: "from-blue-500 to-gray-600",
       videoId: video.videoId,
       isVideo: true,
       defaultWidth: 900,
-      defaultHeight: 600
+      defaultHeight: 600,
     };
     onOpenWindow(videoWindow);
   };
@@ -34,19 +36,22 @@ const Videos = ({ onOpenWindow }) => {
       <div className="flex-1 overflow-y-auto">
         <div className="grid grid-cols-2 gap-6">
           {videos.map((video) => (
-            <div 
-              key={video.id} 
+            <div
+              key={video.id}
               className="group relative overflow-hidden rounded-lg bg-gray-800/50 cursor-pointer hover:bg-gray-700/50 transition-all duration-300"
               onClick={() => handleVideoClick(video)}
             >
               <div className="relative">
-                <img 
-                  src={video.thumbnail} 
+                <img
+                  src={video.thumbnail}
                   alt={video.title}
                   className="w-full h-32 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30">
-                  <Icon icon="mdi:play-circle" className="w-12 h-12 text-red-500" />
+                  <Icon
+                    icon="mdi:play-circle"
+                    className="w-12 h-12 text-red-500"
+                  />
                 </div>
               </div>
               <div className="p-4">
