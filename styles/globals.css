@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 5px;
+  border: 1px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #555555;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #333333 #1a1a1a;
+}
+
+.iconify {
+  shape-rendering: crispEdges;
+  image-rendering: pixelated;
+}
+
+body {
+  font-family: "Courier New", monospace;
+}
+
+img,
+canvas,
+iframe {
+  image-rendering: pixelated;
+}
+
+iframe {
+  filter: contrast(1.08) saturate(0.9);
+}
+
+.pixel-screen {
+  isolation: isolate;
+}
+
+.pixel-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0.12;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+  background-size: 4px 4px;
+  mix-blend-mode: screen;
+}
+
+.pixel-control {
+  width: 2rem;
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  border-radius: 0.25rem;
+  color: #d1d5db;
+  image-rendering: pixelated;
+  transition:
+    transform 120ms ease,
+    filter 120ms ease;
+}
+
+.pixel-control:hover {
+  transform: translateY(-1px) scale(1.08);
+  filter: brightness(1.25);
+}
+
+.pixel-control:active {
+  transform: translateY(1px) scale(0.96);
+}
+
+.pixel-minimize {
+  background: #ca8a04;
+}
+
+.pixel-fullscreen {
+  background: #16a34a;
+}
+
+.pixel-close {
+  background: #dc2626;
+}
