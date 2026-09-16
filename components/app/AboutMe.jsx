@@ -1,16 +1,55 @@
 import { Icon } from "@iconify/react";
 
+const SKILLS = [
+  {
+    category: "Languages",
+    accent: "text-blue-400",
+    hover: "hover:border-blue-500/50",
+    items: ["Python", "TypeScript", "JavaScript", "SQL", "C++", "Rust"],
+  },
+  {
+    category: "Frontend",
+    accent: "text-purple-400",
+    hover: "hover:border-purple-500/50",
+    items: ["React", "Next.js", "Tailwind CSS", "shadcn/ui"],
+  },
+  {
+    category: "Backend",
+    accent: "text-amber-400",
+    hover: "hover:border-amber-500/50",
+    items: ["Node.js", "Express", "FastAPI", "REST APIs"],
+  },
+  {
+    category: "Data",
+    accent: "text-emerald-400",
+    hover: "hover:border-emerald-500/50",
+    items: ["PostgreSQL", "Supabase", "MongoDB", "Drizzle ORM", "Prisma"],
+  },
+  {
+    category: "AI",
+    accent: "text-pink-400",
+    hover: "hover:border-pink-500/50",
+    items: [
+      "LLM APIs",
+      "Voice Agents",
+      "RAG Systems",
+      "Agent Workflows",
+      "AI Integration",
+    ],
+  },
+];
+
 const AboutMe = () => {
   return (
     <div className="h-full min-h-0 overflow-y-auto overscroll-contain p-6 text-white sm:p-8">
       <div className="max-w-2xl mx-auto pb-8">
         <div className="flex items-center gap-6 mb-6">
-          <div className="relative">
-            <div className="w-20 h-20 border-2 border-white bg-gradient-to-br from-blue-500 to-purple-700 shadow-[4px_4px_0_rgba(0,0,0,0.7)] flex items-center justify-center">
-              <Icon
-                icon="pixelarticons:briefcase"
-                className="w-12 h-12 text-white"
-                aria-label="About Me app"
+          <div className="relative shrink-0">
+            <div className="w-20 h-20 overflow-hidden border-2 border-white shadow-[4px_4px_0_rgba(0,0,0,0.7)]">
+              <img
+                src="/images/aboutme-person.svg"
+                alt="Pixel art avatar of Md Athar Jamal Makki"
+                className="h-full w-full object-cover"
               />
             </div>
           </div>
@@ -57,6 +96,42 @@ const AboutMe = () => {
               <p className="text-gray-400 text-xs">
                 Practical tools | privacy-first software
               </p>
+            </div>
+          </div>
+
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-5 border border-gray-700/50">
+            <h3 className="text-lg font-semibold text-white mb-3 flex items-center gap-2">
+              <Icon icon="mdi:tools" className="text-cyan-400" />
+              Technical Skills
+            </h3>
+            <div className="space-y-3">
+              {SKILLS.map(({ category, accent, hover, items }) => (
+                <div
+                  key={category}
+                  className="flex flex-col gap-1.5 sm:flex-row sm:gap-3"
+                >
+                  <div
+                    className={`flex w-28 shrink-0 items-center gap-1.5 ${accent}`}
+                  >
+                    <Icon
+                      icon="mdi:chevron-right"
+                      className="h-4 w-4"
+                      aria-hidden="true"
+                    />
+                    <span className="text-sm font-medium">{category}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {items.map((item) => (
+                      <span
+                        key={item}
+                        className={`rounded-md border border-gray-700/60 bg-gray-900/60 px-2 py-1 text-xs text-gray-300 transition-colors ${hover}`}
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
