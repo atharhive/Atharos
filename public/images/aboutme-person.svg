@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" shape-rendering="crispEdges" role="img" aria-label="Pixel art avatar of Md Athar Jamal Makki">
+  <title>Pixel art avatar</title>
+  <rect width="128" height="128" fill="#22d3ee"/>
+  <rect x="8" y="8" width="112" height="112" fill="#0ec9e6"/>
+  <g fill="#0b1220">
+    <path d="M32 16h64v8h-64z"/>
+    <path d="M24 24h8v8h-8z"/>
+    <path d="M96 24h8v8h-8z"/>
+    <path d="M16 32h8v8h-8z"/>
+    <path d="M104 32h8v8h-8z"/>
+    <path d="M16 40h8v8h-8z"/>
+    <path d="M104 40h8v8h-8z"/>
+    <path d="M16 48h8v8h-8z"/>
+    <path d="M104 48h8v8h-8z"/>
+    <path d="M16 56h8v8h-8z"/>
+    <path d="M104 56h8v8h-8z"/>
+    <path d="M16 64h8v8h-8z"/>
+    <path d="M104 64h8v8h-8z"/>
+    <path d="M40 64h8v8h-8z"/>
+    <path d="M80 64h8v8h-8z"/>
+    <path d="M16 72h8v8h-8z"/>
+    <path d="M104 72h8v8h-8z"/>
+    <path d="M16 80h8v8h-8z"/>
+    <path d="M104 80h8v8h-8z"/>
+    <path d="M16 88h8v8h-8z"/>
+    <path d="M24 88h8v8h-8z"/>
+    <path d="M96 88h8v8h-8z"/>
+    <path d="M104 88h8v8h-8z"/>
+    <path d="M24 96h8v8h-8z"/>
+    <path d="M96 96h8v8h-8z"/>
+    <path d="M32 104h8v8h-8z"/>
+    <path d="M88 104h8v8h-8z"/>
+    <path d="M16 112h8v8h-8z"/>
+    <path d="M104 112h8v8h-8z"/>
+    <path d="M8 120h8v8h-8z"/>
+    <path d="M112 120h8v8h-8z"/>
+  </g>
+  <g fill="#1f2937">
+    <path d="M32 24h64v8h-64z"/>
+    <path d="M24 32h80v8h-80z"/>
+    <path d="M24 40h80v8h-80z"/>
+    <path d="M24 48h8v8h-8z"/>
+    <path d="M96 48h8v8h-8z"/>
+    <path d="M24 56h8v8h-8z"/>
+    <path d="M96 56h8v8h-8z"/>
+    <path d="M24 64h8v8h-8z"/>
+    <path d="M96 64h8v8h-8z"/>
+    <path d="M24 72h8v8h-8z"/>
+    <path d="M96 72h8v8h-8z"/>
+    <path d="M24 80h8v8h-8z"/>
+    <path d="M96 80h8v8h-8z"/>
+    <path d="M24 88h8v8h-8z"/>
+    <path d="M96 88h8v8h-8z"/>
+  </g>
+  <g fill="#f5c09a">
+    <path d="M32 48h64v8h-64z"/>
+    <path d="M32 56h64v8h-64z"/>
+    <path d="M32 64h8v8h-8z"/>
+    <path d="M48 64h32v8h-32z"/>
+    <path d="M88 64h8v8h-8z"/>
+    <path d="M32 72h64v8h-64z"/>
+    <path d="M32 80h64v8h-64z"/>
+    <path d="M32 88h8v8h-8z"/>
+    <path d="M40 88h8v8h-8z"/>
+    <path d="M80 88h16v8h-16z"/>
+    <path d="M32 96h64v8h-64z"/>
+    <path d="M40 104h48v8h-48z"/>
+  </g>
+  <g fill="#b4553f">
+    <path d="M48 88h32v8h-32z"/>
+  </g>
+  <g fill="#fb923c">
+    <path d="M24 112h80v8h-80z"/>
+    <path d="M16 120h32v8h-32z"/>
+    <path d="M80 120h32v8h-32z"/>
+  </g>
+  <g fill="#ffffff">
+    <path d="M48 120h32v8h-32z"/>
+  </g>
+</svg>
