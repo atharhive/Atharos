@@ -19,6 +19,7 @@
   "dependencies": {
     "@iconify/react": "^6.0.0",
     "@tailwindcss/postcss": "^4.1.11",
+    "@vercel/analytics": "^2.0.1",
     "autoprefixer": "^10.4.21",
     "framer-motion": "^12.23.6",
     "next": "16.3.5",
